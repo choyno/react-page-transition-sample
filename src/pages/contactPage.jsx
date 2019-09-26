@@ -1,12 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default class AboutPage extends React.Component {
+export default class ContactPage extends React.Component {
   render() {
     return (
       <div className="page-container page">
         <div className="about-page inner-container">
           <div className="our-story">
+            <h1> Contact Us</h1>
             I'm Islem Maboud a Full Stack Web Developer and a Tutorials Maker at
             Youtube and Ipenywis.com love exploring new things and creating Open
             source projects
@@ -18,7 +19,7 @@ export default class AboutPage extends React.Component {
             </p>
           </div>
           <div className="navigation">
-            <Link to="/contact">
+            <Link to="/">
               <button className="btn">Go Back</button>
             </Link>
           </div>

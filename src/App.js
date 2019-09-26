@@ -3,28 +3,29 @@ import "./App.css";
 import HomePage from "./pages/homePage";
 import { Switch, Route, withRouter } from "react-router-dom";
 import AboutPage from "./pages/aboutPage";
+import ContactPage from "./pages/contactPage";
 
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 import "./pageTransitions/slideTransition.scss";
 
 class App extends Component {
-constructor(props) {
-  super(props);
-  this.state = {
-    prevDepth: this.getPathDepth(this.props.location)
-  };
-}
+  constructor(props) {
+    super(props);
+    this.state = {
+      prevDepth: this.getPathDepth(this.props.location)
+    };
+  }
 
-componentWillReceiveProps() {
-  this.setState({ prevDepth: this.getPathDepth(this.props.location) });
-}
+  componentWillReceiveProps() {
+    this.setState({ prevDepth: this.getPathDepth(this.props.location) });
+  }
 
-getPathDepth(location) {
-  let pathArr = location.pathname.split("/");
-  pathArr = pathArr.filter(n => n !== "");
-  return pathArr.length;
-}
+  getPathDepth(location) {
+    let pathArr = location.pathname.split("/");
+    pathArr = pathArr.filter(n => n !== "");
+    return pathArr.length;
+  }
 
   render() {
     const { location } = this.props;
@@ -41,20 +42,21 @@ getPathDepth(location) {
           mountOnEnter={false}
           unmountOnExit={true}
         >
-<div
-  className={
-    this.getPathDepth(location) - this.state.prevDepth >= 0
-      ? "left"
-      : "right"
-  }
->
-  <Switch location={location}>
-    <Route path="/" exact component={HomePage} />
-    <Route path="/about" exact component={AboutPage} />
-  </Switch>
-</div>
-        </CSSTransition>
-      </TransitionGroup>
+      <div
+        className={
+          this.getPathDepth(location) - this.state.prevDepth >= 0
+            ? "left"
+            : "right"
+        }
+      >
+        <Switch location={location}>
+          <Route path="/" exact component={HomePage} />
+          <Route path="/about" exact component={AboutPage} />
+          <Route path="/contact" exact component={ContactPage} />
+        </Switch>
+      </div>
+    </CSSTransition>
+  </TransitionGroup>
     );
   }
 }
